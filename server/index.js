@@ -15,17 +15,17 @@ dotenv.config()
 
 const app = express();
 
-
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7878;
 const DBAddress = process.env.DB_URL || "localhost:8888";
-
 
 mongoose.connect(DBAddress);
 const database = mongoose.connection
 console.log('database connected successfully')
 
 database.on('error', (error) => {
+    console.log("db error")
     console.log(error)
+    process.exit(-1)
 })
 
 app.use(cors());
