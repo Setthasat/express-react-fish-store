@@ -14,6 +14,10 @@ function Home() {
     const [fishes, setFishes] = React.useState(null)
     const [promotion, setPromotion] = React.useState(null)
 
+    const [prevIndex, setPrevIndex] = React.useState(0)
+    const [indexArray, setIndexArray] = React.useState(4)
+    const [fishesSlice, setFishesSlice] = React.useState(null)
+
     // useEffect
     React.useEffect(() => {
             //fetch data paralell
@@ -21,13 +25,24 @@ function Home() {
         }, []
     )
 
+    React.useEffect(() => {
+        if (fishes) {
+            setFishesSlice(fishes.slice(prevIndex, indexArray))
+        }
+        },[indexArray, prevIndex]
+    )
+
     const fetchAll = async () => {
         const [fishRes, promoRes] = await Promise.all([
             fetchFish(),
             fetchPromotion()
         ])
+
+        const sliceArray = fishRes.data.data.slice(0, indexArray)
+        
         setFishes(fishRes.data.data);
         setPromotion(promoRes.data.data)
+        setFishesSlice(sliceArray)
         setLoading(false)
         return
     }
@@ -59,8 +74,8 @@ function Home() {
             <div className='h-screen w-screen bg-slate-100'>
                     <Logo />
                     <Hero promotion={promotion} />
-                    <CardContainer fishes={fishes} />
-                    <Footer />
+                    <CardContainer fishes={fishesSlice} setIndexArray={setIndexArray} indexArray={indexArray} setPrevIndex={setPrevIndex} prevIndex={prevIndex} />
+                    <Footer /> 
             </div>
         )
     } else {

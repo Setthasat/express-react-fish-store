@@ -213,7 +213,7 @@ async function updateFishWeight(req, res){
 
 function promotion(_, res){
 
-    var delayInMilliseconds = 3000; //3 second
+    var delayInMilliseconds = 1; //3 second
 
     setTimeout(function() {
     //your code to be executed after 3 second
