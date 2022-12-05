@@ -16,7 +16,7 @@ dotenv.config()
 const app = express();
 
 
-const PORT = process.env.PORT || 7878;
+const PORT = process.env.PORT || 8080;
 const DBAddress = process.env.DB_URL || "localhost:8888";
 
 
