@@ -2,7 +2,7 @@ import React from 'react'
 
 function NoPage() {
   return (
-    <div>NoPage</div>
+    <div className='flex justify-center items-center text-[3rem] w-screen h-screen'>Sorry we can't find this page :( </div>
   )
 }
 

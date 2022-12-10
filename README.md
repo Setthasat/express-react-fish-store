@@ -16,7 +16,7 @@ npm i
 
 add env
 
-node {entry file}
+node {entry file}   
 
 ======================== git ======================
 
